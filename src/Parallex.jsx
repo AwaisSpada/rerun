@@ -71,13 +71,13 @@ export default function Parallex() {
   useEffect(() => {
     // const unsubscribe = scrollYProgress.onChange((latestScroll) => {
     //   console.log(latestScroll)
-    //   setIsHidden(latestScroll >= 0.005); 
+    //   setIsHidden(latestScroll >= 0.001); 
     // });
     const unsubscribe = scrollYProgress.onChange((latestScroll) => {
       const currentScrollY = latestScroll * window.innerHeight;
 
       // Check scroll direction
-      if (currentScrollY > previousScrollY) {
+      if (currentScrollY >= previousScrollY) {
         // Scrolling down
         setIsHidden(true);
       } else if (currentScrollY < previousScrollY) {
@@ -91,6 +91,8 @@ export default function Parallex() {
 
     return () => unsubscribe(); 
   }, [scrollY]);
+
+
   useEffect(() => {
     const handleResize = () => {
         setWindowWidth(window.innerWidth);
@@ -140,7 +142,7 @@ const getWidthStyle = () => {
       if (progress < 0.5  && progress >= 0.1) {
         console.log(progress)
         setActiveHeading(1);
-      } else if (progress >= 0.5 && progress < 0.75) {
+      } else if (progress >=  0.5  && progress < 0.75) {
         console.log(progress)
         setActiveHeading(2);
       } else if (progress >= 0.75 && progress < 0.8) {
@@ -193,8 +195,8 @@ const getWidthStyle = () => {
       <Innovation />
       <Strategy />
       {/* Last Section with Scroll Progress */}
-      <section className="normal-section lifeSec" ref={lastSectionRef} style={{ height: "150vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", position: "relative", transition: 'all 0.3s ease' }} >
-        <section style={{position:"sticky", top:"0%" , height: "auto"}}>
+      <section className="normal-section lifeSec" ref={lastSectionRef} style={{ height: "150vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "start", position: "relative", transition: 'all 0.3s ease' }} >
+        <section style={{position:"sticky", top:"5%" , height: "auto", overflow: 'visible'}}>
             <div className="container">
             <h1>The <span>AI</span> <span>Lifecycle</span></h1>
             <p className='mainPara'>Building, Training, and Evolving AI Solutions for Lasting Impact</p>
