@@ -164,7 +164,7 @@ section.parallexSec > div {
   text-decoration-skip-ink: none;
   color: #FFFFFF;
   position: sticky;
-  top: 5%;
+  top: 10%;
   padding: 50px 0;
   background-color: #000000;
   z-index: 999;
@@ -434,7 +434,41 @@ section.parallexSec > div {
   opacity: 0.5;
 }
 
+.innoSec .col-lg-6 {
+  position: relative;
+}
+.arrow-left{
+  position: absolute;
+  top: 43%;
+  left: 0;
+  z-index: 999;
+  background-color: #000000;
+  color: #fff;
+  border-radius: 100%;
+  border: none;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  /* display: none; */
+}
 
+.arrow-right{
+  position: absolute;
+  top: 43%;
+  right: 0;
+  z-index: 999;
+  background-color: #000000;
+  color: #fff;
+  border-radius: 100%;
+  border: none;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  /* display: none; */
+
+}
 
 button.active {
   opacity: 1;
@@ -473,7 +507,51 @@ button.active {
 .tile img{
   width: 100%;
 }
+.arrow-left{
+  left: 22%;
 }
+.arrow-right{
+  right: 22%;
+}
+}
+
+/* @media screen and (min-width: 375px){
+.arrow-left{
+ left: 1%;
+}
+.arrow-right{
+ right: 1%;
+}
+}
+
+
+@media screen and (min-width: 414px){
+  .arrow-left{
+   left: 1%;
+  }
+  .arrow-right{
+   right: 1%;
+  }
+  }
+
+
+  @media screen and (min-width: 360px){
+    .arrow-left{
+     left: -4%;
+    }
+    .arrow-right{
+     right: -4%;
+    }
+    }
+
+    @media screen and (min-width: 412px){
+      .arrow-left{
+       left: 1%;
+      }
+      .arrow-right{
+       right: 1%;
+      }
+      } */
 
 /* innovation css */
 
@@ -1410,6 +1488,8 @@ header .mobile-nav {
 
 h1.parallexHeading{
   padding-bottom: 10px;
+  top: 5%;
+
 }
 
 .innoSec .container .row {
@@ -1472,6 +1552,7 @@ h1.parallexHeading{
 
   .futureSec{
     padding-bottom: 0;
+    height: auto;
   }
 
   .lifeSec{
@@ -1606,6 +1687,12 @@ h1.parallexHeading{
     justify-content: start;
     padding: 100px 0 200px;
     scroll-snap-align: none;
+  }
+  .arrow-left, .arrow-right{
+    display: block;
+  }
+  .footerLocation::before {
+    content: none;
   }
 }
 

@@ -1,17 +1,16 @@
 import { useState } from "react";
-
-import inno1 from './assets/Telecom.png'
-import inno2 from './assets/Healthcare.png'
-import inno3 from './assets/Finance.png'
+import inno1 from './assets/Telecom.png';
+import inno2 from './assets/Healthcare.png';
+import inno3 from './assets/Finance.png';
 
 const Innovation = () => {
     const [centerIndex, setCenterIndex] = useState(1);
 
     // Tiles array
     const tiles = [
-        { id: 0, content: inno1, p: 'AI solutions designed to enhance customer engagement, optimize networks, and reduce operational inefficiencies. We help telecom providers leverage real-time data for more personalized experiences' },
-        { id: 1, content: inno2, p: 'Transforming healthcare with AI-driven predictive analytics, personalized patient care, and real-time diagnostic tools. We optimize healthcare operations, reduce costs, and improve patient experiences.' },
-        { id: 2, content: inno3, p: 'Enhancing financial services with AI-driven risk analysis, personalized client engagement, and predictive financial modeling. We enable financial institutions to stay competitive in a data-driven world' },
+        { id: 0, content: inno1, p: 'AI solutions designed to enhance customer engagement, optimize networks, and reduce operational inefficiencies. We help telecom providers leverage real-time data for more personalized experiences', label: 'Telecom' },
+        { id: 1, content: inno2, p: 'Transforming healthcare with AI-driven predictive analytics, personalized patient care, and real-time diagnostic tools. We optimize healthcare operations, reduce costs, and improve patient experiences.', label: 'Healthcare' },
+        { id: 2, content: inno3, p: 'Enhancing financial services with AI-driven risk analysis, personalized client engagement, and predictive financial modeling. We enable financial institutions to stay competitive in a data-driven world', label: 'Finance' },
     ];
 
     const handleDragStart = (index) => {
@@ -35,22 +34,32 @@ const Innovation = () => {
         setCenterIndex(index);
     };
 
+    // Navigate to the next or previous tile
+    const handleArrowClick = (direction) => {
+        setCenterIndex((prevIndex) => {
+            if (direction === 'left') {
+                return (prevIndex + 2) % 3; // Move to previous tile
+            } else {
+                return (prevIndex + 1) % 3; // Move to next tile
+            }
+        });
+    };
+
     return (
         <section className='innoSec' id='innoSec'>
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col-lg-6">
-                         <p className='innoPreHead'>Leading the AI Transformation</p>
-                         <p className='innoMainHead'>
+                        <p className='innoPreHead'>Leading the AI Transformation</p>
+                        <p className='innoMainHead'>
                             Empowering <strong>Industries</strong>  <br /> through AI-Driven
-                         </p>
-                         <h2>
+                        </p>
+                        <h2>
                             Innovation
-                         </h2>
-
-                         <p className='innoSimplePara'>
+                        </h2>
+                        <p className='innoSimplePara'>
                             Explore solutions for your Industry
-                         </p>
+                        </p>
                         <a href="#">Get in Touch</a>
                     </div>
                     <div className="col-lg-6">
@@ -65,40 +74,46 @@ const Innovation = () => {
                                     }
 
                                     return (
-                                        <div 
-                                            key={tile.id} 
-                                            className={`tile ${position}`} 
-                                            draggable 
-                                            onDragStart={() => handleDragStart(index)} 
-                                            onDrop={(e) => handleDrop(e, index)} 
+                                        <div
+                                            key={tile.id}
+                                            className={`tile ${position}`}
+                                            draggable
+                                            onDragStart={() => handleDragStart(index)}
+                                            onDrop={(e) => handleDrop(e, index)}
                                             onDragOver={handleDragOver}
                                         >
-                                            <img src={tile.content} alt="Tile Image" />
-                                            <p className='d-none'>
+                                            <img src={tile.content} alt={`${tile.label} AI Solutions`} />
+                                            <p className='tile-description'>
                                                 {tile.p}
-                                            </p> 
-                                            <span className='d-none'>
-                                                Network Optimization  | Predictive Customer Behaviour 
-                                                Customer Churn Reduction |  Real-Time Data Analytics
-                                            </span>
+                                            </p>
                                         </div>
                                     );
                                 })}
                             </div>
                         </div>
 
-                        {/* Buttons below the slider */}
-                        <div className="controls">
-                            {tiles.map((tile, index) => (
-                            <button
-                                key={tile.id}
-                                onClick={() => handleClick(index)}
-                                className={centerIndex === index ? "active" : ""}
-                            >
-                                
+                        {/* Arrows */}
+                        <div className="slider-arrows">
+                            <button className="arrow-left" onClick={() => handleArrowClick('left')}>
+                                {'<'} 
                             </button>
-                            ))}
+                            <button className="arrow-right" onClick={() => handleArrowClick('right')}>
+                                {'>'} 
+                            </button>
                         </div>
+
+                        {/* Buttons below the slider */}
+                        {/* <div className="controls">
+                            {tiles.map((tile, index) => (
+                                <button
+                                    key={tile.id}
+                                    onClick={() => handleClick(index)}
+                                    className={centerIndex === index ? "active" : ""}
+                                >
+                                   
+                                </button>
+                            ))}
+                        </div> */}
                     </div>
                 </div>
             </div>

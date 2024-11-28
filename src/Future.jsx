@@ -28,7 +28,7 @@ const Future = () => {
         <h1>What’s  the <span>Future</span> <span>of</span> <span>AI</span>  ?</h1>
         <p>Harnessing the Power of AI to Transform Data into Actionable Insights</p>
         <div style={{width: '100%'}}> 
-            <Carousel responsive={responsive} arrows={false} swipeable={true} centerMode={true} infinite={true}>
+            <Carousel responsive={responsive} arrows={true} swipeable={true} centerMode={true} infinite={true}>
                 <div>
                     <div className="futureTile">
                         <h2>Generative AI</h2>

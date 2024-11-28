@@ -6,7 +6,7 @@ import pt4 from './assets/pt4.png'
 import pt5 from './assets/pt5.png'
 import pt6 from './assets/pt6.png'
 
-// 
+
 const Potential = () => {
   return (
     <section className="potenSec">
